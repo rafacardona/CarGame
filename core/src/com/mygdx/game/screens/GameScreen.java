@@ -8,11 +8,11 @@ import static com.mygdx.game.extra.Utils.USERPINKCAR;
 import static com.mygdx.game.extra.Utils.WORLD_HEIGTH;
 import static com.mygdx.game.extra.Utils.WORLD_WIDTH;
 
-import com.badlogic.gdx.Audio;
+
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.assets.AssetManager;
+
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.files.FileHandle;
+
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.MathUtils;
@@ -21,7 +21,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.Contact;
-import com.badlogic.gdx.physics.box2d.ContactFilter;
+
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Manifold;
@@ -29,14 +29,13 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
+
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.mygdx.game.MainGame;
 import com.mygdx.game.actor.PinkCar;
 import com.mygdx.game.actor.RedCar;
-import com.mygdx.game.extra.AssetMan;
 import com.mygdx.game.extra.Utils;
 
 public class GameScreen extends BaseScreen implements ContactListener {
@@ -72,8 +71,8 @@ public class GameScreen extends BaseScreen implements ContactListener {
         this.world.setContactListener(this);
 
         //creamos la camara
-        this.ortCamera = (OrthographicCamera) this.stage.getCamera();
-        this.debugRenderer = new Box2DDebugRenderer();
+        //this.ortCamera = (OrthographicCamera) this.stage.getCamera();
+        //this.debugRenderer = new Box2DDebugRenderer();
 
 
         this.arrayPinkCar = new Array<PinkCar>();
@@ -112,14 +111,14 @@ public class GameScreen extends BaseScreen implements ContactListener {
         crearPinkCar(delta);
 
         //ACTUALICE LOS ACTORES
-        this.stage.getBatch().setProjectionMatrix(ortCamera.combined);
+        //this.stage.getBatch().setProjectionMatrix(ortCamera.combined);
         this.stage.act();
         this.world.step(delta, 6,2);
         this.stage.draw();
 
         //ACTUALIZAR CAMARA
-        this.ortCamera.update();
-        this.debugRenderer.render(this.world, this.ortCamera.combined);
+//        this.ortCamera.update();
+//        this.debugRenderer.render(this.world, this.ortCamera.combined);
         detectarInput(delta);
 
         eliminarPinkCar();
